@@ -1,5 +1,19 @@
 #! /bin/bash -x
-#This script is coded by v1n1t
+
+################################
+# Author : Vinit Kumar
+# version : 0.1
+################################
+
+###################################################################################
+
+# GNU GPL Version 3
+#
+# Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+
+# Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
+
+###################################################################################
 
 
 title="Sytem information for $HOSTNAME"
