@@ -6,7 +6,7 @@
 ################################
 
 ###################################################################################
- 
+
 # GNU GPL Version 3
 #
 # Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
@@ -16,7 +16,7 @@
 ###################################################################################
 
 
-import sys 
+import sys
 import os.path
 import ConfigParser
 import twitter
@@ -55,14 +55,14 @@ STATY, is a command line twitter client what you can use to tweet from any syste
 Before Using
 ============
 *)Make the file staty.py executive using chmod u+x staty.py and then move the file to your /usr/bin directory.
-*) It uses python-twitter module so better install it before hand to using this command 
+*) It uses python-twitter module so better install it before hand to using this command
 
 # pip install python-twitter
 
 '''
 
 
-api = twitter.Api(consumer_key='your_consumer_key',consumer_secret='your_consumer_secret',access_token_key='your_access_token',access_token_secret='your_access_token_secret')
+api = twitter.Api(consumer_key='I5OS42aDDuCUc3w1ihmG6A',consumer_secret='13dHiniIZBxgnt1uzQyYixt4673B3pE4njHlVKIAmkY',access_token_key='55832449-iutpd5gWqwo2qoK4cVIpuggHuUsQCFR7UCbPDo2ca',access_token_secret='Bj1ddLwU0vVSA8bxGEGT9oNwhsEhrJOL43XephNDKHY')
 
 
 
@@ -82,7 +82,7 @@ if cmp(sys.argv[1],"friends") == 0:
                 print u.name
                 print '\t'
 
-        	
+
 
 
 if cmp(sys.argv[1],"msg") == 0:
