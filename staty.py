@@ -62,7 +62,7 @@ Before Using
 '''
 
 
-api = twitter.Api(consumer_key='I5OS42aDDuCUc3w1ihmG6A',consumer_secret='13dHiniIZBxgnt1uzQyYixt4673B3pE4njHlVKIAmkY',access_token_key='55832449-iutpd5gWqwo2qoK4cVIpuggHuUsQCFR7UCbPDo2ca',access_token_secret='Bj1ddLwU0vVSA8bxGEGT9oNwhsEhrJOL43XephNDKHY')
+api = twitter.Api(consumer_key='key1',consumer_secret='key2',access_token_key='key3',access_token_secret='key4')
 
 
 
