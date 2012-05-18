@@ -31,44 +31,48 @@
 title="Sytem information for $HOSTNAME"
 right_now=$(date +"%x %r %Z")
 time_stamp="Updated on $right_now by $USER"
-
+echo $title
+echo "===================================="
+echo "Hard disk temperature in Deg Celcius"
+sudo hddtemp /dev/sda
 ###functions
 
 
 function system_info 
 { 
-echo $title
 echo $right_now
 echo $time_stamp
+
 }
 
 function show_uptime
 {
-echo "<h2>System Uptime</h2>"
-echo "<pre>"
+echo "System Uptime"
+echo 
 uptime
-echo "</pre>"
+echo 
+echo 
 }
 
 function drive_space
 {
-echo "<h2>Fileystem space</h2>"
-echo "<pre>"
+echo "Fileystem space"
+echo 
 df
-echo "</pre>"
+echo 
 }
 
 
 
 function home_space
 {
-    echo "<h2>Home directory space by user</h2>"
-    echo "<pre>"
+    echo Home directory space by user
+    echo 
     format="%8s%10s%10s   %-s\n"
     printf "$format" "Dirs" "Files" "Blocks" "Directory"
     printf "$format" "----" "-----" "------" "---------"
     if [ $(id -u) = "0" ]; then
-        dir_list="/home/vinit/D*"
+        dir_list="/home/vicky/D*"
     else
         dir_list=$HOME
     fi
@@ -78,7 +82,7 @@ function home_space
         total_blocks=$(du -s $home_dir)
         printf "$format" $total_dirs $total_files $total_blocks
     done
-    echo "</pre>"
+    echo 
 
 }   # end of home_space 
 
@@ -87,19 +91,10 @@ function home_space
 ####main
 
 cat << _EOF_
-
-	<html>
-	<head>
-		<title>$title</title>
-	</head>
-
-	<body>
-		<h1>$TITLE</h1>
-		<p>$TIME_STAMP</p>
+		$TIME_STAMP
 		$(system_info)
 		$(show_uptime)
 		$(drive_space)
 		$(home_space)
-	</body>
-	</html>
+	
 _EOF_
