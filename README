@@ -1,10 +1,8 @@
-STATY, is a command line twitter client what you can use to tweet from any system that supports python.It's in a very nascent stage as of now, But i hope this will serve you pretty well.Also the idea behind name staty is that it can tweet system stats your preferable twitter account. All you need is a active Internet connection in the system you are interested.
-Before Using
+STATY, is a command line twitter client what you can use to tweet from any system that supports python.Also the idea behind name staty is that it can tweet system stats your preferable twitter account. All you need is a active Internet connection in the system you are interested.
+=================================================================================
+Before Using:
 
-*)Make the file staty.py executive using chmod u+x staty.py and then move the file to your /usr/bin directory.
-*) It uses python-twitter module so better install it before hand to using this command
-# pip install python-twitter
-
+Run ./install.sh
 
 Usage 
 ==================================================================================
@@ -13,14 +11,15 @@ Commands avaliable:
 ----------------------------------------------------------------------------------
 staty.py [options]
 ----------------------------------------------------------------------------------
-1) update/tweet
-2) friends
-3) followers
-4) feed
-5) replies
-6) mention
-7) msg
-8) VerifyCredentials(Use vc)
-9) Search
+1)  update/tweet
+2)  friends
+3)  followers
+4)  feed
+5)  replies
+6)  mention
+7)  msg
+8)  VerifyCredentials(Use vc)
+9)  Search
+10) system
 ==================================================================================
 
