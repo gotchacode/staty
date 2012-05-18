@@ -17,9 +17,9 @@
 
 
 import sys
-import os.path
-import ConfigParser
 import twitter
+from subprocess import *
+
 
 __author__ = "Vinit Kumar <vinitcool76@gmail.com>"
 
@@ -32,15 +32,16 @@ Commands avaliable:
 ----------------------------------------------------------------------------------
 staty.py [options]
 ----------------------------------------------------------------------------------
-1) update/tweet
-2) friends
-3) followers
-4) feed
-5) replies
-6) mention
-7) msg
-8) VerifyCredentials(Use vc)
-9) Search
+1)  update/tweet
+2)  friends
+3)  followers
+4)  feed
+5)  replies
+6)  mention
+7)  msg
+8)  VerifyCredentials(Use vc)
+9)  Search
+10) system
 ==================================================================================
 '''
 
@@ -54,10 +55,7 @@ STATY, is a command line twitter client what you can use to tweet from any syste
 
 Before Using
 ============
-*)Make the file staty.py executive using chmod u+x staty.py and then move the file to your /usr/bin directory.
-*) It uses python-twitter module so better install it before hand to using this command
-
-# pip install python-twitter
+* Run ./install.sh
 
 '''
 
@@ -117,3 +115,8 @@ if cmp(sys.argv[1],"search") == 0:
 	search = api.GetSearch(' '.join(sys.argv[2:]))
 	print [getattr(s.user,"screen_name")+":"+getattr(s,"text") for s in search]
 
+if cmp(sys.argv[1],"system") == 0:
+    stuff = Popen(["./sysinfo.sh"],stdout=PIPE)
+    link = Popen(["pastebinit"],stdin=stuff.stdout,stdout=PIPE)
+    status = link.communicate()[0]
+    api.PostUpdates(status)
