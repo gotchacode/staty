@@ -8,6 +8,19 @@ The most functional twitter client for Command line use
 """
 
 from setuptools import setup
+INSTALL_REQUIRES = [
+        'python-twitter'
+        ]
+CLASSIFIERS = [
+                'Environment :: Web Environment',
+                'Intended Audience :: Developers',
+                'License :: OSI Approved :: BSD License',
+                'Operating System :: OS Independent',
+                'Programming Language :: Python',
+                'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
+                'Topic :: Software Development :: Libraries :: Python Modulies'
+                         ]
+
 
 setup(
         name='staty',
@@ -18,18 +31,10 @@ setup(
         author_email='vinitcool76@gmail.com',
         discription='twitter client coded in python',
         long_description=__doc__,
-        py_modules=['staty'],
+        install_requires = INSTALL_REQUIRES,
         zip_safe=False,
         include_platform_data=True,
-        platforms='any'
-        classifiers=[
-                    'Environment :: Web Environment',
-                    'Intended Audience :: Developers',
-                    'License :: OSI Approved :: BSD License',
-                    'Operating System :: OS Independent',
-                    'Programming Language :: Python',
-                    'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
-                    'Topic :: Software Development :: Libraries :: Python Modulies'
-		]
+        platforms='Linux/Unix',
+        classifiers=CLASSIFIERS
         )
 
