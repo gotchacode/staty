@@ -1,0 +1,22 @@
+Metadata-Version: 1.1
+Name: staty
+Version: 0.1
+Summary: UNKNOWN
+Home-page: http://vinitcool76.github.com/Staty/
+Author: Vinit Kumar
+Author-email: vinitcool76@gmail.com
+License: GPL v.3
+Description: 
+        staty.py
+        ~~~~~~~~
+        The most functional twitter client for Command line use
+        
+        
+Platform: Linux/Unix
+Classifier: Environment :: Web Environment
+Classifier: Intended Audience :: Developers
+Classifier: License :: OSI Approved :: BSD License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Internet :: WWW/HTTP :: Dynamic Content
+Classifier: Topic :: Software Development :: Libraries :: Python Modulies
