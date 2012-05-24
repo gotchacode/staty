@@ -116,7 +116,7 @@ if cmp(sys.argv[1],"search") == 0:
 	print [getattr(s.user,"screen_name")+":"+getattr(s,"text") for s in search]
 
 if cmp(sys.argv[1],"system") == 0:
-    stuff = Popen(["./sysinfo.sh"],stdout=PIPE)
+    stuff = Popen(["./sysinfo.pl"],stdout=PIPE)
     link = Popen(["pastebinit"],stdin=stuff.stdout,stdout=PIPE)
     status = link.communicate()[0]
     api.PostUpdates(status)
