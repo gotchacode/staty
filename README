@@ -1,7 +1,7 @@
 STATY, is a command line twitter client what you can use to tweet from any system that supports python.Also the idea behind name staty is that it can tweet system stats your preferable twitter account. All you need is a active Internet connection in the system you are interested.
 =================================================================================
 Before Using:
-
+================================================================================
 Run ./install.sh
 
 Usage 
