@@ -1,71 +1,59 @@
-#! /usr/bin/python -tt
+#! /usr/bin/env python
 
-################################
-# Author : Vinit Kumar
-# version : 0.1
-################################
-
-###################################################################################
-
-# GNU GPL Version 3
-#
-# Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
-
-# Everyone is permitted to copy and distribute verbatim copies of this license document, but changing it is not allowed.
-
-###################################################################################
-
-
-import sys
 import twitter
+import sys
+import os.path
+import ConfigParser
 from subprocess import *
 
+Usage = """
+Use ./staty.py [options]
+"""
 
-__author__ = "Vinit Kumar <vinitcool76@gmail.com>"
-
-version = 0.1
-
-Usage =''''
-==================================================================================
-Commands avaliable:
-==================================================================================
-----------------------------------------------------------------------------------
-staty.py [options]
-----------------------------------------------------------------------------------
-1)  update/tweet
-2)  friends
-3)  followers
-4)  feed
-5)  replies
-6)  mention
-7)  msg
-8)  VerifyCredentials(Use vc)
-9)  Search
-10) system
-==================================================================================
-'''
+description = """
+Staty is a full fledged twitter client
 
 
+       -------------------------------------------------------
+      ____   _________        __          __________
+     /  __| |___  ____|      // \\       |___  _____| \\     //
+    /  /        | |         //__ \\          | |       \\   //
+    \  \__      | |        //____ \\         | |        \\_//
+     \__  \     | |       //       \\        | |         | |
+      __/ /     | |      //         \\       | |         | |
+     |___/      |_|     //           \\      |_|         |_|
+
+   =============================================================
+   Tweets options:
+
+   tweet
+   friends
+   system
+   msg
+   followers
+   vc
+   replies
+   feed
+
+"""
+
+check = os.path.isfile(os.path.expanduser('~/.staty.conf'))
+if cmp(check,False) == 0:
+    print "Run the ./install.sh and check again!"
+    sys.exit(2)
 
 
-Description='''
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-STATY, is a command line twitter client what you can use to tweet from any system that supports python.It's in a very nascent stage as of now, But i hope this will serve you pretty well.Also the idea behind name staty is that it can tweet system stats your preferrable twitter account. All you need is a active internet connection in the system you are intrested.
-===================================================================================
+config = ConfigParser.ConfigParser()
+config.read(os.path.expanduser('~/.staty.conf'))
+conskey = config.get("STATY","consumer_key",raw=True)
+conssec = config.get("STATY","consumer_secret",raw=True)
+accstkn = config.get("STATY","access_token",raw=True)
+accssec = config.get("STATY","access_token_secret",raw=True)
 
-Before Using
-============
-* Run ./install.sh
-
-'''
-
-
-api = twitter.Api(consumer_key='key1',consumer_secret='key2',access_token_key='key3',access_token_secret='key4')
-
-
+api = twitter.Api(consumer_key=conskey,consumer_secret=conssec,access_token_key=accstkn,access_token_secret=accssec)
 
 if len(sys.argv) == 1:
-	print Description
+	print description
 	print '\n'
 	print Usage
 	sys.exit(2)
@@ -79,9 +67,6 @@ if cmp(sys.argv[1],"friends") == 0:
         for u in users:
                 print u.name
                 print '\t'
-
-
-
 
 if cmp(sys.argv[1],"msg") == 0:
         msg = api.GetDirectMessages()
@@ -115,8 +100,14 @@ if cmp(sys.argv[1],"search") == 0:
 	search = api.GetSearch(' '.join(sys.argv[2:]))
 	print [getattr(s.user,"screen_name")+":"+getattr(s,"text") for s in search]
 
+
 if cmp(sys.argv[1],"system") == 0:
-    stuff = Popen(["./sysinfo.pl"],stdout=PIPE)
+    stuff = Popen(["./sysinfo.sh"],stdout=PIPE)
     link = Popen(["pastebinit"],stdin=stuff.stdout,stdout=PIPE)
     status = link.communicate()[0]
     api.PostUpdates(status)
+
+
+
+
+
