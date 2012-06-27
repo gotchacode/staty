@@ -3,7 +3,7 @@
 
 filename=$HOME/.staty.conf
 
-if [ -x "$filename" ]; then 
+if [ -f "$filename" ]; then 
 	echo "$filename exists".............
 else
 	echo "Creating  $filename";touch ~/.staty.conf
