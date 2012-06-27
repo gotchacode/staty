@@ -58,7 +58,7 @@ function drive_space
 {
 echo "Fileystem space"
 echo 
-df
+df -h
 echo 
 }
 

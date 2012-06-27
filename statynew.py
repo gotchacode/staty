@@ -34,7 +34,6 @@ Staty is a full fledged twitter client
    vc
    replies
    feed
-   quote
 
 """
 
@@ -108,9 +107,7 @@ if cmp(sys.argv[1],"system") == 0:
     status = link.communicate()[0]
     api.PostUpdates(status)
 
-if cmp(sys.argv[1],"quote") == 0:
-    status = Popen(["./quote.sh"],stdout=PIPE).communicate()[0]
-    api.PostUpdates(status)
+
 
 
 
