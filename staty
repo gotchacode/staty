@@ -8,7 +8,7 @@ from subprocess import *
 
 Usage = """
 First copy the script staty to /usr/bin directory and
-Use 
+Use
 $ staty [options]
 """
 
@@ -83,7 +83,7 @@ if cmp(sys.argv[1],"vc") == 0:
 
 if cmp(sys.argv[1],"replies") == 0:
         reply = api.GetReplies()
-        print [u.text for u in reply]
+        print "\n".join([u.text for u in reply])
 
 if cmp(sys.argv[1],"update") == 0 or cmp(sys.argv[1],"tweet") == 0:
 	status=' '.join(sys.argv[2:])
