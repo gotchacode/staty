@@ -34,7 +34,6 @@ Staty is a full fledged twitter client
    vc
    replies
    feed
-   quote
 
 """
 
@@ -65,15 +64,17 @@ if (cmp(sys.argv[1],'-h') or cmp(sys.argv[1],'--help')) == 0:
 
 if cmp(sys.argv[1],"friends") == 0:
         users = api.GetFriends()
-        print "\n".join([u.name for u in users])
+        for u in users:
+                print u.name
+                print '\t'
 
 if cmp(sys.argv[1],"msg") == 0:
         msg = api.GetDirectMessages()
-        print "\n".join([u.text for u in msg])
+        print [u.text for u in msg]
 
 if cmp(sys.argv[1],"followers") == 0:
         followers = api.GetFollowers()
-        print "\n".join([u.name for u in followers])
+        print [u.name for u in followers]
 
 if cmp(sys.argv[1],"vc") == 0:
         vc = api.VerifyCredentials()
@@ -93,7 +94,7 @@ if cmp(sys.argv[1],"update") == 0 or cmp(sys.argv[1],"tweet") == 0:
 
 if cmp(sys.argv[1],"feed") == 0 and len(sys.argv) == 4:
 	feeds=api.GetUserTimeline(sys.argv[2],count=sys.argv[3])
-	print "\n".join([feed.text for feed in feeds])
+	print [feed.text for feed in feeds]
 
 if cmp(sys.argv[1],"search") == 0:
 	search = api.GetSearch(' '.join(sys.argv[2:]))
@@ -106,9 +107,7 @@ if cmp(sys.argv[1],"system") == 0:
     status = link.communicate()[0]
     api.PostUpdates(status)
 
-if cmp(sys.argv[1],"quote") == 0:
-    status = Popen(["./quote.sh"],stdout=PIPE).communicate()[0]
-    api.PostUpdates(status)
+
 
 
 

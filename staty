@@ -7,7 +7,9 @@ import ConfigParser
 from subprocess import *
 
 Usage = """
-Use ./staty.py [options]
+First copy the script staty to /usr/bin directory and
+Use 
+$ staty [options]
 """
 
 description = """
