@@ -65,17 +65,15 @@ if (cmp(sys.argv[1],'-h') or cmp(sys.argv[1],'--help')) == 0:
 
 if cmp(sys.argv[1],"friends") == 0:
         users = api.GetFriends()
-        for u in users:
-                print u.name
-                print '\t'
+        print "\n".join([u.name for u in users])
 
 if cmp(sys.argv[1],"msg") == 0:
         msg = api.GetDirectMessages()
-        print [u.text for u in msg]
+        print "\n".join([u.text for u in msg])
 
 if cmp(sys.argv[1],"followers") == 0:
         followers = api.GetFollowers()
-        print [u.name for u in followers]
+        print "\n".join([u.name for u in followers])
 
 if cmp(sys.argv[1],"vc") == 0:
         vc = api.VerifyCredentials()
@@ -95,7 +93,7 @@ if cmp(sys.argv[1],"update") == 0 or cmp(sys.argv[1],"tweet") == 0:
 
 if cmp(sys.argv[1],"feed") == 0 and len(sys.argv) == 4:
 	feeds=api.GetUserTimeline(sys.argv[2],count=sys.argv[3])
-	print [feed.text for feed in feeds]
+	print "\n".join([feed.text for feed in feeds])
 
 if cmp(sys.argv[1],"search") == 0:
 	search = api.GetSearch(' '.join(sys.argv[2:]))
