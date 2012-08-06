@@ -1,11 +1,14 @@
 #! /usr/bin/env python
 
 import twitter
-import sys
+import sys,time
 import os.path
 import ConfigParser
 from subprocess import *
+import webbrowser
 
+URL = 'http://dev.twitter.com'
+new = 2
 Usage = """
 First copy the script staty to /usr/bin directory and
 Use
@@ -42,7 +45,9 @@ Staty is a full fledged twitter client
 
 check = os.path.isfile(os.path.expanduser('~/.staty.conf'))
 if cmp(check,False) == 0:
-    print "Run the ./install.sh and check again!"
+    print "Opening your browser, Register a new app,and note all keys. Once done,run the ./install.sh and check again!"
+    sleep(2)
+    webbrowser.open(URL,new=new)
     sys.exit(2)
 
 
