@@ -6,6 +6,7 @@ import os.path
 import ConfigParser
 from subprocess import *
 import webbrowser
+from clint.textui import colored
 
 URL = 'http://dev.twitter.com'
 new = 2
@@ -45,7 +46,7 @@ Staty is a full fledged twitter client
 
 check = os.path.isfile(os.path.expanduser('~/.staty.conf'))
 if cmp(check,False) == 0:
-    print "Opening your browser, Register a new app,and note all keys. Once done,run the ./install.sh and check again!"
+    print colored.magenta("Opening your browser, Register a new app,and note all keys. Once done,run the ./install.sh and check again!")
     sleep(2)
     webbrowser.open(URL,new=new)
     sys.exit(2)
@@ -61,61 +62,64 @@ accssec = config.get("STATY","access_token_secret",raw=True)
 api = twitter.Api(consumer_key=conskey,consumer_secret=conssec,access_token_key=accstkn,access_token_secret=accssec)
 
 if len(sys.argv) == 1:
-	print description
+	print colored.blue(description)
 	print '\n'
-	print Usage
+	print colored.white(Usage)
 	sys.exit(2)
 
 if (cmp(sys.argv[1],'-h') or cmp(sys.argv[1],'--help')) == 0:
-	print Usage
+	print colored.white(Usage)
 	sys.exit(2)
 
 if cmp(sys.argv[1],"friends") == 0:
         users = api.GetFriends()
-        print "\n".join([u.name for u in users])
+        print colored.cyan("\n".join([u.name for u in users]))
 
 if cmp(sys.argv[1],"msg") == 0:
         msg = api.GetDirectMessages()
-        print "\n".join([u.text for u in msg])
+        print colored.white("\n".join([u.text for u in msg]))
 
 if cmp(sys.argv[1],"followers") == 0:
         followers = api.GetFollowers()
-        print "\n".join([u.name for u in followers])
+        print colored.white("\n".join([u.name for u in followers]))
 
 if cmp(sys.argv[1],"vc") == 0:
         vc = api.VerifyCredentials()
-        print vc
+        print colored.green(vc)
 
 if cmp(sys.argv[1],"replies") == 0:
         reply = api.GetReplies()
-        print "\n".join([u.text for u in reply])
+        print colored.white("\n".join([u.text for u in reply]))
 
 if cmp(sys.argv[1],"update") == 0 or cmp(sys.argv[1],"tweet") == 0:
 	status=' '.join(sys.argv[2:])
 	if len(status) < 140:
 		api.PostUpdates(status)
-		print "Status Is Updated Successfully!"
+		print colred.green("Status Is Updated Successfully!")
 	else:
-		print "Your status is of "+str(len(status))+"chars.Twitter doesn't allow more than 140 chars"
+		print colred.white("Your status is of "+str(len(status))+"chars.Twitter doesn't allow more than 140 chars")
 
 if cmp(sys.argv[1],"feed") == 0 and len(sys.argv) == 4:
+
 	feeds=api.GetUserTimeline(sys.argv[2],count=sys.argv[3])
-	print "\n".join([feed.text for feed in feeds])
+    	print colored.cyan("\n".join([feed.text for feed in feeds]))
 
 if cmp(sys.argv[1],"search") == 0:
 	search = api.GetSearch(' '.join(sys.argv[2:]))
-	print [getattr(s.user,"screen_name")+":"+getattr(s,"text") for s in search]
+	print colored.white("\n".join([getattr(s.user,"screen_name")+":"+" "+getattr(s,"text") for s in search]))
 
 
 if cmp(sys.argv[1],"system") == 0:
     stuff = Popen(["./sysinfo.sh"],stdout=PIPE)
     link = Popen(["pastebinit"],stdin=stuff.stdout,stdout=PIPE)
     status = link.communicate()[0]
+    print colored.green("Umm... You system stats are being tweeted in a while...!")
     api.PostUpdates(status)
 
 if cmp(sys.argv[1],"quote") == 0:
     status = Popen(["./quote.sh"],stdout=PIPE).communicate()[0]
     api.PostUpdates(status)
+    print colored.white("The QuoteBot Strikes again!")
 
 
 
