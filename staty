@@ -1,7 +1,8 @@
 #! /usr/bin/env python
 
 import twitter
-import sys,time
+import sys
+from time import sleep
 import os.path
 import ConfigParser
 from subprocess import *
@@ -117,7 +118,7 @@ if cmp(sys.argv[1],"system") == 0:
     api.PostUpdates(status)
 
 if cmp(sys.argv[1],"quote") == 0:
-    status = Popen(["./quote.sh"],stdout=PIPE).communicate()[0]
+    status = Popen([".$HOME/quote.sh"],stdout=PIPE).communicate()[0]
     api.PostUpdates(status)
     print colored.white("The QuoteBot Strikes again!")
 
