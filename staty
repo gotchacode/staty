@@ -1,18 +1,19 @@
 #! /usr/bin/env python
 
-import twitter
+
 import sys
-from time import sleep
 import os.path
-import ConfigParser
-from subprocess import *
+import twitter
 import webbrowser
+import ConfigParser
+from time import sleep
+from subprocess import *
 from clint.textui import colored
 
 URL = 'http://dev.twitter.com'
 new = 2
+
 Usage = """
-First copy the script staty to /usr/bin directory and
 Use
 $ staty [options]
 """
@@ -33,15 +34,15 @@ Staty is a full fledged twitter client
    =============================================================
    Tweets options:
 
-   tweet
-   friends
-   system
-   msg
-   followers
-   vc
-   replies
-   feed
-   quote
+    * tweet
+    * friends
+    * system
+    * msg
+    * followers
+    * vc
+    * replies
+    * feed
+    * quote
 
 """
 
@@ -111,7 +112,7 @@ if cmp(sys.argv[1],"search") == 0:
 
 
 if cmp(sys.argv[1],"system") == 0:
-    stuff = Popen(["./sysinfo.sh"],stdout=PIPE)
+    stuff = Popen([".$HOME/sysinfo.sh"],stdout=PIPE)
     link = Popen(["pastebinit"],stdin=stuff.stdout,stdout=PIPE)
     status = link.communicate()[0]
     print colored.green("Umm... You system stats are being tweeted in a while...!")

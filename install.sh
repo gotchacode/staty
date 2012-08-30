@@ -36,10 +36,20 @@ function create_token {
 create_token
 echo " * Done creating the token!"
 echo " * Now copying the scripts"
+echo " * Copying the file to /usr/bin directory "
+
 cp scripts/quote.sh $HOME/quote.sh
+
 if [ -f /usr/bin/pastebinit ]; then 
 	echo " * You have the dependencies installed"
 else
        echo " * Installing the dependencies!"	
 	sudo apt-get -y install pastebinit
 fi 
+
+if [ -f /usr/bin/staty ]; then 
+	echo " ***Enjoy Staty!!**"      
+else
+	sudo cp staty /usr/bin/staty
+fi
+
