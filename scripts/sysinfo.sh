@@ -33,8 +33,6 @@ right_now=$(date +"%x %r %Z")
 time_stamp="Updated on $right_now by $USER"
 echo $title
 echo "===================================="
-echo "Hard disk temperature in Deg Celcius"
-sudo hddtemp /dev/sda
 ###functions
 
 
