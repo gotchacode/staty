@@ -1,6 +1,6 @@
-#Staty is a full fledged twitter client
+#Staty 
 <hr>
-
+It is a cute commandline twitter client that is extendible to support your needs.
 
 ##Tweets options:
 
