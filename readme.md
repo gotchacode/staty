@@ -1,9 +1,10 @@
 #Staty 
-<hr>
-It is a cute commandline twitter client that is extendible to support your needs.
+
+Small and sweet twitter client of Linux Console.
 
 ##Tweets options:
 
+```sh
 * tweet
 * friends
 * system
@@ -13,10 +14,11 @@ It is a cute commandline twitter client that is extendible to support your needs
 * replies
 * feed
 * quote
+```
 
-
-###Usage:
+##Usage:
 
 First copy the script staty to /usr/bin directory and
+
 Use $ staty [options]
 
