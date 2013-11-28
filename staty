@@ -7,7 +7,7 @@ import twitter
 import webbrowser
 import ConfigParser
 from time import sleep
-from subprocess import *
+from subprocess import Popen
 from clint.textui import colored
 
 URL = 'http://dev.twitter.com'
@@ -97,9 +97,9 @@ if cmp(sys.argv[1],"update") == 0 or cmp(sys.argv[1],"tweet") == 0:
 	status=' '.join(sys.argv[2:])
 	if len(status) < 140:
 		api.PostUpdates(status)
-		print colred.green("Status Is Updated Successfully!")
+		print colored.green("Status Is Updated Successfully!")
 	else:
-		print colred.white("Your status is of "+str(len(status))+"chars.Twitter doesn't allow more than 140 chars")
+		print colored.white("Your status is of "+str(len(status))+"chars.Twitter doesn't allow more than 140 chars")
 
 if cmp(sys.argv[1],"feed") == 0 and len(sys.argv) == 4:
 
